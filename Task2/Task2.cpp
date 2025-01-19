@@ -3,7 +3,7 @@
 
 using namespace std;
 
-float Abs(float u) {
+float module(float u) {
 	return u > 0 ? u : -u;
 }
 
@@ -32,7 +32,7 @@ int main()
 		return 0;
 	}
 
-	i = 0; u = 1; s = 1;
+	i = 0;
 	do {
 		if (i != 0) {
 			cout << "Ошибка! X введен неверно!\n"
@@ -47,13 +47,15 @@ int main()
 		cout << "Ошибка! X введен неверно!\n";
 		return 0;
 	}
+	i = 0; u = x; s = 0;
 
-	cout << setw(2) << "|" << setw(6) << "i" << setw(6) << "|" << setw(6) << "u" << setw(6) << "|" << setw(6) << "s" << setw(6) << "|" << "\n";
-	cout << setw(2) << string(36, '—') << "\n";
-	while (i < N && (Abs(u)) > eps) {
-		u = u;
+	cout << "|" << setw(4) << "i" << setw(8) << "|" << setw(15) << setprecision(4) << "u" << setw(15) << "|" << setw(15) << setprecision(4) << "s" << setw(15) << "|" << "\n";
+	cout << "|" << string(71, '—') << "|" << "\n";
+	cout << "|" << setw(4) << i << setw(8) << "|" << setw(15) << setprecision(4) << u << setw(15) << "|" << setw(15) << setprecision(4) << s << setw(15) << "|" << "\n";
+	while (i < N && (module(u)) > eps) {
+		u = (((-1) * x * x) / ((2*i+3) * (2*i+2))) * u;
 		s += u;
-		cout << setw(2) << "|" << setw(6) << i << setw(6) << "|" << setw(6) << u << setw(6) << "|" << setw(6) << s << setw(6) << "|" << "\n";
+		cout << "|" << setw(4) << i+1 << setw(8) << "|" << setw(15) << setprecision(4) << u << setw(15) << "|" << setw(15) << setprecision(4) << s << setw(15) << "|" << "\n";
 		i++;
 	}
 	system("pause");
