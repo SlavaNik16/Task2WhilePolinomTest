@@ -11,11 +11,11 @@ int main()
 {
 	setlocale(LC_ALL, "rus");
 	cout << "u(i) = (-1)^i * x^(2*i+1) / (2*i+1)!\nНайти: u(i), s(i)\n"
-		 << "Автор: Николаев Вячеслав Алексеевич, группа 4335, версия: 1.0\n"
-		 << "Даты:\nНачало: 19.01.2025\nКонец: 19.01.2025\n";
+		<< "Автор: Николаев Вячеслав Алексеевич, группа 4335, версия: 2.0\n"
+		<< "Даты:\nНачало: 19.01.2025\nКонец: 19.01.2025\n";
 	const unsigned int N = 1000;
 	unsigned int i;
-	double u, s, x, eps;
+	double u[N], s[N], x, eps;
 	i = 0;
 	do {
 		if (i != 0) {
@@ -47,27 +47,27 @@ int main()
 		cout << "Ошибка! X введен неверно!\n";
 		return 0;
 	}
-	i = 0; 
-	u = x;
-	s = u;
+	i = 0;
+	u[i] = x; 
+	s[i] = u[i];
 
-	cout << "|" << setw(4) << "i" << setw(8) << "|" 
-		<< setw(15) << setprecision(6) << "u" << setw(15) << "|" 
-		<< setw(15) << setprecision(6) << "s" << setw(15) << "|" 
+	cout << "|" << setw(4) << "i" << setw(8) << "|"
+		<< setw(15) << setprecision(6) << "u" << setw(15) << "|"
+		<< setw(15) << setprecision(6) << "s" << setw(15) << "|"
 		<< "\n";
 
 	cout << "|" << string(71, '—') << "|" << "\n";
-	cout << "|" << setw(4) << i << setw(8) << "|" 
-		<< setw(15) << setprecision(6) << u << setw(15) << "|" 
-		<< setw(15) << setprecision(6) << s << setw(15) << "|" 
+	cout << "|" << setw(4) << i << setw(8) << "|"
+		<< setw(15) << setprecision(6) << u[i] << setw(15) << "|"
+		<< setw(15) << setprecision(6) << s[i] << setw(15) << "|"
 		<< "\n";
 
-	while (i < N && (module(u)) > eps) {
-		u = (((-1) * x * x) / ((2*i+3) * (2*i+2))) * u;
-		s += u;
-		cout << "|" << setw(4) << i+1 << setw(8) << "|" 
-			<< setw(15) << setprecision(6) << u << setw(15) << "|" 
-			<< setw(15) << setprecision(6) << s << setw(15) << "|" 
+	while (i < N && (module(u[i])) > eps) {
+		u[i+1] = (((-1) * x * x) / ((2 * i + 3) * (2 * i + 2))) * u[i];
+		s[i+1] = s[i] + u[i+1];
+		cout << "|" << setw(4) << i + 1 << setw(8) << "|"
+			<< setw(15) << setprecision(6) << u[i+1] << setw(15) << "|"
+			<< setw(15) << setprecision(6) << s[i+1] << setw(15) << "|"
 			<< "\n";
 		i++;
 	}
