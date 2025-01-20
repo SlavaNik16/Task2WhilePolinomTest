@@ -47,15 +47,26 @@ int main()
 		cout << "Ошибка! X введен неверно!\n";
 		return 0;
 	}
-	i = 0; u = x; s = 0;
+	i = 0; u = x; s = u;
 
-	cout << "|" << setw(4) << "i" << setw(8) << "|" << setw(15) << setprecision(4) << "u" << setw(15) << "|" << setw(15) << setprecision(4) << "s" << setw(15) << "|" << "\n";
+	cout << "|" << setw(4) << "i" << setw(8) << "|" 
+		<< setw(15) << setprecision(7) << "u" << setw(15) << "|" 
+		<< setw(15) << setprecision(7) << "s" << setw(15) << "|" 
+		<< "\n";
+
 	cout << "|" << string(71, '—') << "|" << "\n";
-	cout << "|" << setw(4) << i << setw(8) << "|" << setw(15) << setprecision(4) << u << setw(15) << "|" << setw(15) << setprecision(4) << s << setw(15) << "|" << "\n";
+	cout << "|" << setw(4) << i << setw(8) << "|" 
+		<< setw(15) << setprecision(7) << u << setw(15) << "|" 
+		<< setw(15) << setprecision(7) << s << setw(15) << "|" 
+		<< "\n";
+
 	while (i < N && (module(u)) > eps) {
 		u = (((-1) * x * x) / ((2*i+3) * (2*i+2))) * u;
 		s += u;
-		cout << "|" << setw(4) << i+1 << setw(8) << "|" << setw(15) << setprecision(4) << u << setw(15) << "|" << setw(15) << setprecision(4) << s << setw(15) << "|" << "\n";
+		cout << "|" << setw(4) << i+1 << setw(8) << "|" 
+			<< setw(15) << setprecision(7) << u << setw(15) << "|" 
+			<< setw(15) << setprecision(7) << s << setw(15) << "|" 
+			<< "\n";
 		i++;
 	}
 	system("pause");
